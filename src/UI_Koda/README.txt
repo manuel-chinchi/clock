@@ -1,0 +1,1 @@
+This folder contains *.kxf files for the Koda layout editor.
