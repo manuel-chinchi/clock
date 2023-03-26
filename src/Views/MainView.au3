@@ -11,6 +11,8 @@ Func MainView()
     _AutoItObject_AddProperty($self, "lblTime", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "lblDate", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "grpSettings", $ELSCOPE_PUBLIC, 0)
+    _AutoItObject_AddProperty($self, "chkWeather", $ELSCOPE_PUBLIC, 0)
+    _AutoItObject_AddProperty($self, "chkFormatTime", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddMethod($self, "Create", "MainView__Create")
     _AutoItObject_AddMethod($self, "Show", "MainView__Show")
 
@@ -33,7 +35,7 @@ Func MainView__Create($self)
     $self.chkWeather = GUICtrlCreateCheckbox('Show climate', 48, 216, 233, 41)
     GUICtrlSetFont(-1, 12, 400, 0, 'Hack')
 
-    $self.chkWeather = GUICtrlCreateCheckbox('Format 24 hs', 48, 272, 233, 41)
+    $self.chkFormatTime = GUICtrlCreateCheckbox('Format 24 hs', 48, 272, 233, 41)
     GUICtrlSetFont(-1, 12, 400, 0, 'Hack')
 
     #Region SetColors
