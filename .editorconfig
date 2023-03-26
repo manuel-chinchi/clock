@@ -1,0 +1,24 @@
+# If VS Code does not recognize the rules of the .editorconfig file
+# 
+# 1. install nugget "EditorConfig for VS Code"
+# 2. npm install -g editorconfig
+# 3. Restart VS Code
+#
+# references: https://stackoverflow.com/questions/46846128/editorconfig-for-vs-code-not-working
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+
+# Markdown
+[*.md]
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+
+# Plain text
+[*.txt]
+indent_style = space
+indent_size = 2
