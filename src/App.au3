@@ -45,10 +45,11 @@ Func Main()
 
             Case $oMainView.chkFormatTime
                 If BitAND(GUICtrlRead($oMainView.chkFormatTime), $GUI_CHECKED) == 1 Then
-                    ; TODO Show in 24 hs format
+                    $g_oUtilsModel.bFormat24hs = True
                 Else
-                    ; TODO Display in AM/PM format, make corresponding function
+                    $g_oUtilsModel.bFormat24hs = False
                 EndIf
+                __RefreshTime()
         EndSwitch
     WEnd
 EndFunc

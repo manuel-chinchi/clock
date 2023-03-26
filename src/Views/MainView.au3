@@ -37,6 +37,7 @@ Func MainView__Create($self)
 
     $self.chkFormatTime = GUICtrlCreateCheckbox('Format 24 hs', 48, 272, 233, 41)
     GUICtrlSetFont(-1, 12, 400, 0, 'Hack')
+    GUICtrlSetState(-1, $GUI_CHECKED)
 
     #Region SetColors
     ;~ GUICtrlSetColor($self.lblTime, $APP_FONT_COLOR)
