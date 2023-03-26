@@ -1,8 +1,12 @@
 #include <GUIConstants.au3>
 #include <Date.au3>
+#include <WinAPIGdi.au3>
 #include "Constants.au3"
 
 Opt("MustDeclareVars", 1)
+
+; Set custom font
+_WinAPI_AddFontResourceEx($APP_FONT_PATH, $FR_PRIVATE, False)
 
 Func Main()
     Local $frmMain = GUICreate($APP_NAME, 320, 240, -1, -1)
