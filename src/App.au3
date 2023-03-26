@@ -52,7 +52,8 @@ Main()
 
 
 Func __RefreshTime()
-    GUICtrlSetData($g_lblTime, _NowTime())
+    Local $oUtilsModel = UtilsModel()
+    GUICtrlSetData($g_lblTime, $oUtilsModel.GetTime())
 EndFunc
 
 #comments-start
