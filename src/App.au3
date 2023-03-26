@@ -35,6 +35,20 @@ Func Main()
         Switch $nMsg
             Case $GUI_EVENT_CLOSE
                 ExitLoop
+
+            Case $oMainView.chkWeather
+                If BitAND(GUICtrlRead($oMainView.chkWeather), $GUI_CHECKED) == 1 Then
+                    ; TODO Show label and Implements request to https://open-meteo.com/ API
+                Else
+                    ; TODO Hidden label
+                EndIf
+
+            Case $oMainView.chkFormatTime
+                If BitAND(GUICtrlRead($oMainView.chkFormatTime), $GUI_CHECKED) == 1 Then
+                    ; TODO Show in 24 hs format
+                Else
+                    ; TODO Display in AM/PM format, make corresponding function
+                EndIf
         EndSwitch
     WEnd
 EndFunc
