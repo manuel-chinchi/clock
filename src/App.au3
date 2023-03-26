@@ -1,9 +1,11 @@
 #include <GUIConstants.au3>
 #include <Date.au3>
 #include <WinAPIGdi.au3>
-#include "References.au3"
+#include "References.au3" ; References to other .au3 files of the project
 
 Opt("MustDeclareVars", 1)
+
+Global $g_oUtilsModel = UtilsModel()
 
 ; Set custom font
 _WinAPI_AddFontResourceEx($APP_FONT_PATH, $FR_PRIVATE, False)
@@ -31,9 +33,12 @@ Func Main()
     ; Create view
     $oMainView.Create()
 
-    ; Get label control from refresh time
+    ; Refresh date and time in view
     Global $g_lblTime = $oMainView.lblTime
+    Global $g_lblDate = $oMainView.lblDate
+
     AdlibRegister("__RefreshTime", 1000)
+    AdlibRegister("__RefreshDate", 1000)
 
     ; Show view
     $oMainView.Show()
@@ -52,8 +57,11 @@ Main()
 
 
 Func __RefreshTime()
-    Local $oUtilsModel = UtilsModel()
-    GUICtrlSetData($g_lblTime, $oUtilsModel.GetTime())
+    GUICtrlSetData($g_lblTime, $g_oUtilsModel.GetTime())
+EndFunc
+
+Func __RefreshDate()
+    GUICtrlSetData($g_lblDate, $g_oUtilsModel.GetDate())
 EndFunc
 
 #comments-start
