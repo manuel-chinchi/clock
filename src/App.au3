@@ -38,7 +38,6 @@ EndFunc
 
 Main()
 
-
 Func __RefreshTime()
     GUICtrlSetData($g_lblTime, $g_oUtilsModel.GetTime())
 EndFunc

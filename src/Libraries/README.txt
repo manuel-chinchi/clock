@@ -1,0 +1,2 @@
+This folder contains UDF libraries used in this project. 
+You can see the complete list of available libraries .au3 by clicking on the following link https://www.autoitscript.com/wiki/User_Defined_Functions
