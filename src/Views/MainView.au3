@@ -17,11 +17,11 @@ Func MainView()
 EndFunc
 
 Func MainView__Create($self)
-    $self.hGui = GUICreate($APP_NAME, 320, 240, -1, -1)
-    $self.lblTime = GUICtrlCreateLabel('hh:mm:ss', 56, 120, 204, 51, BitOR($SS_CENTER,$SS_CENTERIMAGE))
+    $self.hGui = GUICreate($APP_NAME, 331, 241, -1, -1, $WS_SYSMENU)
+    $self.lblTime = GUICtrlCreateLabel('hh:mm:ss', 32, 54, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
     
-    $self.lblDate = GUICtrlCreateLabel('dd/mm/yy', 56, 56, 204, 51, BitOR($SS_CENTER,$SS_CENTERIMAGE))
+    $self.lblDate = GUICtrlCreateLabel('dd/mm/yy', 32, 0, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
 
     GUICtrlSetColor($self.lblTime, $APP_FONT_COLOR)
