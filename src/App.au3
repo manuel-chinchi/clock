@@ -11,23 +11,6 @@ Global $g_oUtilsModel = UtilsModel()
 _WinAPI_AddFontResourceEx($APP_FONT_PATH, $FR_PRIVATE, False)
 
 Func Main()
-    #comments-start
-    Local $frmMain = GUICreate($APP_NAME, 320, 240, -1, -1)
-    Global $g_lblTime = GUICtrlCreateLabel(_GetTime(), 56, 120, 204, 51, BitOR($SS_CENTER,$SS_CENTERIMAGE))
-    GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
-
-    Global $g_lblDate = GUICtrlCreateLabel(_GetDate(), 56, 56, 204, 51, BitOR($SS_CENTER,$SS_CENTERIMAGE))
-    GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
-    __lblRefreshDate()
-
-    GUICtrlSetColor($g_lblDate, $APP_FONT_COLOR)
-    GUICtrlSetColor($g_lblTime, $APP_FONT_COLOR)
-    GUISetBkColor($APP_BACKGROUND_COLOR)
-    
-    AdlibRegister("__lblRefreshTime", 1000)
-    GUISetState(@SW_SHOW)
-    #comments-end
-
     Local $oMainView = MainView()
 
     ; Create view
@@ -63,24 +46,3 @@ EndFunc
 Func __RefreshDate()
     GUICtrlSetData($g_lblDate, $g_oUtilsModel.GetDate())
 EndFunc
-
-#comments-start
-Func __lblRefreshTime()
-    GUICtrlSetData($g_lblTime, _GetTime())
-    ;~ GUICtrlSetData($g_lblTime, _NowTime())
-EndFunc
-
-Func __lblRefreshDate()
-    GUICtrlSetData($g_lblDate, _GetDate())
-    ;~ GUICtrlSetData($g_lblDate, _NowDate())
-EndFunc
-
-Func _GetTime()
-    Return @HOUR &":" &@MIN &":" &@SEC
-EndFunc
-
-Func _GetDate()
-    ;~ Return "00" &"." &@MON &"." &StringRight(@YEAR, 2)
-    Return @MDAY &"/" &@MON &"/" &StringRight(@YEAR, 2)
-EndFunc
-#comments-end
