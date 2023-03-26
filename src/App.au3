@@ -1,7 +1,7 @@
 #include <GUIConstants.au3>
 #include <Date.au3>
 #include <WinAPIGdi.au3>
-#include "Views\MainView.au3"
+#include "References.au3"
 
 Opt("MustDeclareVars", 1)
 
