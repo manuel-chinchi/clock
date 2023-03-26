@@ -1,12 +1,11 @@
 #include <GUIConstants.au3>
-#include <WinAPIGdi.au3>
 #include <Date.au3>
 #include "Constants.au3"
 
 Opt("MustDeclareVars", 1)
 
 Func Main()	
-	Local $frmMain = GUICreate('App', 320, 240, -1, -1)
+	Local $frmMain = GUICreate($APP_NAME, 320, 240, -1, -1)
 	Global $g_lblTime = GUICtrlCreateLabel(_GetTime(), 56, 120, 204, 51, BitOR($SS_CENTER,$SS_CENTERIMAGE))
 	GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
 	
@@ -23,6 +22,7 @@ Func Main()
 
 	While True
 		Local $nMsg = GUIGetMsg()
+
 		Switch $nMsg
 			Case $GUI_EVENT_CLOSE
 				ExitLoop
