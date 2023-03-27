@@ -39,11 +39,11 @@ Func Main()
             Case $GUI_EVENT_CLOSE
                 ExitLoop
 
-            Case $oMainView.chkWeather
-                If BitAND(GUICtrlRead($oMainView.chkWeather), $GUI_CHECKED) == 1 Then
-                    ; TODO Show label and Implements request to https://open-meteo.com/ API
+            Case $oMainView.chkAlwaysOnTop
+                If BitAND(GUICtrlRead($oMainView.chkAlwaysOnTop), $GUI_CHECKED) == 1 Then
+                    WinSetOnTop($oMainView.sClassName, '', $WINDOWS_ONTOP)
                 Else
-                    ; TODO Hidden label
+                    WinSetOnTop($oMainView.sClassName, '', 0)
                 EndIf
 
             Case $oMainView.chkFormatTime

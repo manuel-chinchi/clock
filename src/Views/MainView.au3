@@ -11,11 +11,12 @@ Func MainView()
     _AutoItObject_AddProperty($self, "lblTime", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "lblDate", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "grpSettings", $ELSCOPE_PUBLIC, 0)
-    _AutoItObject_AddProperty($self, "chkWeather", $ELSCOPE_PUBLIC, 0)
+    _AutoItObject_AddProperty($self, "chkAlwaysOnTop", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "chkFormatTime", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "chkDarkMode", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "lblFormatTime", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "lblFormatTime", $ELSCOPE_PUBLIC, 0)
+    _AutoItObject_AddProperty($self, "sClassName", $ELSCOPE_PUBLIC, $APP_NAME)
 
     _AutoItObject_AddMethod($self, "Create", "MainView__Create")
     _AutoItObject_AddMethod($self, "Show", "MainView__Show")
@@ -36,7 +37,7 @@ Func MainView__Create($self)
     $self.grpSettings = GUICtrlCreateGroup("SETTINGS", 24, 194, 284, 151)
     GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
 
-    $self.chkWeather = GUICtrlCreateCheckbox('SHOW CLIMATE', 48, 216, 233, 41)
+    $self.chkAlwaysOnTop = GUICtrlCreateCheckbox('ALWAYS ON TOP', 48, 216, 233, 41)
     GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
 
     $self.chkFormatTime = GUICtrlCreateCheckbox('FORMAT 24 HS', 48, 256, 233, 41)
@@ -68,8 +69,8 @@ Func MainView__ChangeTheme($self, $sTypeTheme)
             #EndRegion
 
             #Region Checkboxes
-            DllCall("UxTheme.dll", "int", "SetWindowTheme", "hwnd", GUICtrlGetHandle($self.chkWeather), "wstr", 0, "wstr", 0)
-            GUICtrlSetColor($self.chkWeather, $COLOR_WHITE)
+            DllCall("UxTheme.dll", "int", "SetWindowTheme", "hwnd", GUICtrlGetHandle($self.chkAlwaysOnTop), "wstr", 0, "wstr", 0)
+            GUICtrlSetColor($self.chkAlwaysOnTop, $COLOR_WHITE)
             DllCall("UxTheme.dll", "int", "SetWindowTheme", "hwnd", GUICtrlGetHandle($self.chkFormatTime), "wstr", 0, "wstr", 0)
             GUICtrlSetColor($self.chkFormatTime, $COLOR_WHITE)
             DllCall("UxTheme.dll", "int", "SetWindowTheme", "hwnd", GUICtrlGetHandle($self.chkDarkMode), "wstr", 0, "wstr", 0)
@@ -91,8 +92,8 @@ Func MainView__ChangeTheme($self, $sTypeTheme)
             #EndRegion
 
             #Region
-            DllCall("UxTheme.dll", "int", "SetWindowTheme", "hwnd", GUICtrlGetHandle($self.chkWeather), "wstr", 0, "wstr", 0)
-            GUICtrlSetColor($self.chkWeather, $COLOR_BLACK)
+            DllCall("UxTheme.dll", "int", "SetWindowTheme", "hwnd", GUICtrlGetHandle($self.chkAlwaysOnTop), "wstr", 0, "wstr", 0)
+            GUICtrlSetColor($self.chkAlwaysOnTop, $COLOR_BLACK)
             DllCall("UxTheme.dll", "int", "SetWindowTheme", "hwnd", GUICtrlGetHandle($self.chkFormatTime), "wstr", 0, "wstr", 0)
             GUICtrlSetColor($self.chkFormatTime, $COLOR_BLACK)
             DllCall("UxTheme.dll", "int", "SetWindowTheme", "hwnd", GUICtrlGetHandle($self.chkDarkMode), "wstr", 0, "wstr", 0)
