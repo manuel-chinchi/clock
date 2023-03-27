@@ -21,7 +21,7 @@ Func MainView()
 EndFunc
 
 Func MainView__Create($self)
-    $self.hGui = GUICreate($APP_NAME, 342, 396, -1, -1, $WS_SYSMENU)
+    $self.hGui = GUICreate($APP_NAME, 342, 410, -1, -1, $WS_SYSMENU)
 
     $self.lblTime = GUICtrlCreateLabel('hh:mm:ss', 32, 78, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
@@ -29,17 +29,21 @@ Func MainView__Create($self)
     $self.lblDate = GUICtrlCreateLabel('dd/mm/yy', 32, 14, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
 
-    $self.grpSettings = GUICtrlCreateGroup("Settings", 24, 184, 281, 145)
-    GUICtrlSetFont(-1, 12, 400, 0, 'Hack')
-    GUICtrlCreateGroup("", -99, -99, 1, 1)
+    $self.grpSettings = GUICtrlCreateGroup("SETTINGS", 24, 194, 284, 151)
+    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
 
-    $self.chkWeather = GUICtrlCreateCheckbox('Show climate', 48, 216, 233, 41)
-    GUICtrlSetFont(-1, 12, 400, 0, 'Hack')
+    $self.chkWeather = GUICtrlCreateCheckbox('SHOW CLIMATE', 48, 216, 233, 41)
+    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
 
-    $self.chkFormatTime = GUICtrlCreateCheckbox('Format 24 hs', 48, 272, 233, 41)
-    GUICtrlSetFont(-1, 12, 400, 0, 'Hack')
+    $self.chkFormatTime = GUICtrlCreateCheckbox('FORMAT 24 HS', 48, 256, 233, 41)
+    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
 
-    $self.lblFormatTime = GUICtrlCreateLabel('', 278, 102, 52, 28, BitOR($SS_CENTER,$SS_CENTERIMAGE))
+    $self.chkDarkMode = GUICtrlCreateCheckbox('DARK MODE', 48, 296, 233, 41)
+    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
+
+    GUICtrlCreateGroup("", -99, -99, 1, 1) ; ???
+
+    $self.lblFormatTime = GUICtrlCreateLabel('', 278, 102, 52, 28, BitOR($SS_LEFT,$SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 12, 800, 0, "Hack")
 
     #Region SetColors
