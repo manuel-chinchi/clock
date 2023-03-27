@@ -38,9 +38,9 @@ EndFunc
 
 Func UtilsModel__GetCurrentFormatTime($self)
     If @HOUR > 12 Then
-        Return 'P.M'
+        Return 'PM'
     Else
-        Return 'A.M'
+        Return 'AM'
     EndIf
 EndFunc
 
