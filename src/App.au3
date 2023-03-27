@@ -56,6 +56,13 @@ Func Main()
                     GUICtrlSetData($oMainView.lblFormatTime, $g_oUtilsModel.sFormatTime)
                 EndIf
                 __RefreshTime()
+
+            Case $oMainView.chkDarkMode
+                If BitAND(GUICtrlRead($oMainView.chkDarkMode), $GUI_CHECKED) == 1 Then
+                    $oMainView.ChangeTheme('DARK')
+                Else
+                    $oMainView.ChangeTheme('DEFAULT')
+                EndIf
         EndSwitch
     WEnd
 EndFunc
