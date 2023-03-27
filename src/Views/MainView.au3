@@ -81,8 +81,9 @@ Func MainView__ChangeTheme($self, $sTypeTheme)
             DllCall("UxTheme.dll", "int", "SetWindowTheme", "hwnd", GUICtrlGetHandle($self.grpSettings), "wstr", 0, "wstr", 0)
             GUICtrlSetColor($self.grpSettings, $COLOR_WHITE)
             #EndRegion
-
-            GUISetBkColor($COLOR_BLACK, $self.hGui)
+            
+            ;~ https://www.colorhexa.com/2d2d30
+            GUISetBkColor(0x2d2d30, $self.hGui)
 
         Case 'DEFAULT'
             #Region Labels
