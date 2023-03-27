@@ -26,6 +26,9 @@ Func Main()
     AdlibRegister("__RefreshTime", 1000)
     AdlibRegister("__RefreshDate", 1000)
 
+    GUICtrlSetState($oMainView.lblFormatTime, $GUI_SHOW)
+    GUICtrlSetData($oMainView.lblFormatTime, $g_oUtilsModel.GetCurrentFormatTime())
+
     ; Show view
     $oMainView.Show()
 
@@ -46,8 +49,11 @@ Func Main()
             Case $oMainView.chkFormatTime
                 If BitAND(GUICtrlRead($oMainView.chkFormatTime), $GUI_CHECKED) == 1 Then
                     $g_oUtilsModel.bFormat24hs = True
+                    GUICtrlSetState($oMainView.lblFormatTime, $GUI_HIDE)
                 Else
                     $g_oUtilsModel.bFormat24hs = False
+                    GUICtrlSetState($oMainView.lblFormatTime, $GUI_SHOW)
+                    GUICtrlSetData($oMainView.lblFormatTime, $g_oUtilsModel.sFormatTime)
                 EndIf
                 __RefreshTime()
         EndSwitch

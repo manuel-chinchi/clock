@@ -7,14 +7,18 @@ Func UtilsModel()
 
     _AutoItObject_AddMethod($self, "GetTime", "UtilsModel__GetTime")
     _AutoItObject_AddMethod($self, "GetDate", "UtilsModel__GetDate")
+    _AutoItObject_AddMethod($self, "GetCurrentFormatTime", "UtilsModel__GetCurrentFormatTime")
     _AutoItObject_AddMethod($self, "AdjustScaleControlsHightDPI", "UtilsModel__AdjustScaleControlsHightDPI")
 
-    _AutoItObject_AddProperty($self, "bFormat24hs", $ELSCOPE_PUBLIC, True)
+    _AutoItObject_AddProperty($self, "bFormat24hs", $ELSCOPE_PUBLIC, False)
+    _AutoItObject_AddProperty($self, "sFormatTime", $ELSCOPE_PUBLIC, '')
 
     Return $self
 EndFunc
 
 Func UtilsModel__GetTime($self)
+    $self.sFormatTime = $self.GetCurrentFormatTime()
+
     If $self.bFormat24hs == True Then
         Return @HOUR &":" &@MIN &":" &@SEC
     Else
@@ -30,6 +34,14 @@ EndFunc
 
 Func UtilsModel__GetDate($self)
     Return @MDAY &"/" &@MON &"/" &StringRight(@YEAR, 2)
+EndFunc
+
+Func UtilsModel__GetCurrentFormatTime($self)
+    If @HOUR > 12 Then
+        Return 'P.M'
+    Else
+        Return 'A.M'
+    EndIf
 EndFunc
 
 Func UtilsModel__AdjustScaleControlsHightDPI($self)

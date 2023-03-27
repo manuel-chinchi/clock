@@ -13,6 +13,7 @@ Func MainView()
     _AutoItObject_AddProperty($self, "grpSettings", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "chkWeather", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddProperty($self, "chkFormatTime", $ELSCOPE_PUBLIC, 0)
+    _AutoItObject_AddProperty($self, "lblFormatTime", $ELSCOPE_PUBLIC, 0)
     _AutoItObject_AddMethod($self, "Create", "MainView__Create")
     _AutoItObject_AddMethod($self, "Show", "MainView__Show")
 
@@ -20,7 +21,7 @@ Func MainView()
 EndFunc
 
 Func MainView__Create($self)
-    $self.hGui = GUICreate($APP_NAME, 331, 396, -1, -1, $WS_SYSMENU)
+    $self.hGui = GUICreate($APP_NAME, 342, 396, -1, -1, $WS_SYSMENU)
 
     $self.lblTime = GUICtrlCreateLabel('hh:mm:ss', 32, 78, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
@@ -37,7 +38,9 @@ Func MainView__Create($self)
 
     $self.chkFormatTime = GUICtrlCreateCheckbox('Format 24 hs', 48, 272, 233, 41)
     GUICtrlSetFont(-1, 12, 400, 0, 'Hack')
-    GUICtrlSetState(-1, $GUI_CHECKED)
+
+    $self.lblFormatTime = GUICtrlCreateLabel('', 278, 102, 52, 28, BitOR($SS_CENTER,$SS_CENTERIMAGE))
+    GUICtrlSetFont(-1, 12, 800, 0, "Hack")
 
     #Region SetColors
     ;~ GUICtrlSetColor($self.lblTime, $APP_FONT_COLOR)
