@@ -26,7 +26,7 @@ Func MainView()
 EndFunc
 
 Func MainView__Create($self)
-    $self.hGui = GUICreate($APP_NAME, 342, 410, -1, -1, $WS_SYSMENU)
+    $self.hGui = GUICreate($APP_NAME &" " &$APP_VERSION, 342, 410, -1, -1, $WS_SYSMENU)
 
     $self.lblTime = GUICtrlCreateLabel('hh:mm:ss', 32, 78, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
