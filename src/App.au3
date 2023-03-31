@@ -26,6 +26,9 @@ Func Main()
     AdlibRegister("__RefreshTime", 1000)
     AdlibRegister("__RefreshDate", 1000)
 
+    GUICtrlSetState($oMainView.lblFormatTime, $GUI_SHOW)
+    GUICtrlSetData($oMainView.lblFormatTime, $g_oUtilsModel.GetCurrentFormatTime())
+
     ; Show view
     $oMainView.Show()
 
@@ -35,6 +38,31 @@ Func Main()
         Switch $nMsg
             Case $GUI_EVENT_CLOSE
                 ExitLoop
+
+            Case $oMainView.chkAlwaysOnTop
+                If BitAND(GUICtrlRead($oMainView.chkAlwaysOnTop), $GUI_CHECKED) == 1 Then
+                    WinSetOnTop($oMainView.sClassName, '', $WINDOWS_ONTOP)
+                Else
+                    WinSetOnTop($oMainView.sClassName, '', 0)
+                EndIf
+
+            Case $oMainView.chkFormatTime
+                If BitAND(GUICtrlRead($oMainView.chkFormatTime), $GUI_CHECKED) == 1 Then
+                    $g_oUtilsModel.bFormat24hs = True
+                    GUICtrlSetState($oMainView.lblFormatTime, $GUI_HIDE)
+                Else
+                    $g_oUtilsModel.bFormat24hs = False
+                    GUICtrlSetState($oMainView.lblFormatTime, $GUI_SHOW)
+                    GUICtrlSetData($oMainView.lblFormatTime, $g_oUtilsModel.sFormatTime)
+                EndIf
+                __RefreshTime()
+
+            Case $oMainView.chkDarkMode
+                If BitAND(GUICtrlRead($oMainView.chkDarkMode), $GUI_CHECKED) == 1 Then
+                    $oMainView.ChangeTheme('DARK')
+                Else
+                    $oMainView.ChangeTheme('DEFAULT')
+                EndIf
         EndSwitch
     WEnd
 EndFunc
