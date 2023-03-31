@@ -35,7 +35,7 @@
 			<properties>
 				<property name="Left" vt="Int8">32</property>
 				<property name="Top" vt="Int8">78</property>
-				<property name="Width" vt="Int16">244</property>
+				<property name="Width" vt="Int16">228</property>
 				<property name="Height" vt="Int8">59</property>
 				<property name="Caption" vt="String">00:00:00</property>
 				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
@@ -57,7 +57,7 @@
 			<properties>
 				<property name="Left" vt="Int8">32</property>
 				<property name="Top" vt="Int8">24</property>
-				<property name="Width" vt="Int16">268</property>
+				<property name="Width" vt="Int16">228</property>
 				<property name="Height" vt="Int8">59</property>
 				<property name="Caption" vt="String">DD/MM/YY</property>
 				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
