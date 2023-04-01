@@ -31,7 +31,7 @@ Func Main()
 
     ; Show view
     $oMainView.Show()
-    $oTimerView.Show()
+
 
     While True
         Local $nMsg = GUIGetMsg()
