@@ -35,16 +35,16 @@ Func MainView__Create($self)
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
 
     $self.grpSettings = GUICtrlCreateGroup("SETTINGS", 24, 194, 284, 151)
-    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
+    GUICtrlSetFont(-1, 10, 800, 0, $APP_FONT_NAME)
 
     $self.chkAlwaysOnTop = GUICtrlCreateCheckbox('ALWAYS ON TOP', 48, 216, 233, 41)
-    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
+    GUICtrlSetFont(-1, 10, 800, 0, $APP_FONT_NAME)
 
     $self.chkFormatTime = GUICtrlCreateCheckbox('FORMAT 24 HS', 48, 256, 233, 41)
-    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
+    GUICtrlSetFont(-1, 10, 800, 0, $APP_FONT_NAME)
 
     $self.chkDarkMode = GUICtrlCreateCheckbox('DARK MODE', 48, 296, 233, 41)
-    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
+    GUICtrlSetFont(-1, 10, 800, 0, $APP_FONT_NAME)
 
     GUICtrlCreateGroup("", -99, -99, 1, 1) ; ???
 
