@@ -1,3 +1,4 @@
+#include-once
 #include <ColorConstants.au3>
 
 Const $APP_NAME = 'Clock'
