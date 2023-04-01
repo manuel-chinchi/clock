@@ -32,18 +32,15 @@ Func Main()
     ; Show view
     $oMainView.Show()
 
-
     While True
         Local $nMsg = GUIGetMsg()
 
         Switch $nMsg
             Case $GUI_EVENT_CLOSE
-                Local $iOpt = MsgBox($MB_YESNO, '', 'Are you sure you want to leave?')
+                Local $iOpt = MsgBox($MB_YESNO + $MB_TOPMOST + $MB_TASKMODAL, '', 'Are you sure you want to leave?')
 
                 If $iOpt == $IDYES Then
-                    ExitLoop
-                Else
-                    ContinueLoop
+                    Exit
                 EndIf
 
             Case $oMainView.chkAlwaysOnTop
