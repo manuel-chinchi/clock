@@ -31,13 +31,20 @@ Func Main()
 
     ; Show view
     $oMainView.Show()
+    $oTimerView.Show()
 
     While True
         Local $nMsg = GUIGetMsg()
 
         Switch $nMsg
             Case $GUI_EVENT_CLOSE
-                ExitLoop
+                Local $iOpt = MsgBox($MB_YESNO, '', 'Are you sure you want to leave?')
+
+                If $iOpt == $IDYES Then
+                    ExitLoop
+                Else
+                    ContinueLoop
+                EndIf
 
             Case $oMainView.chkAlwaysOnTop
                 If BitAND(GUICtrlRead($oMainView.chkAlwaysOnTop), $GUI_CHECKED) == 1 Then
