@@ -83,7 +83,7 @@ Func MainView__ChangeTheme($self, $sTypeTheme)
             #EndRegion
             
             ;~ https://www.colorhexa.com/2d2d30
-            GUISetBkColor(0x2d2d30, $self.hGui)
+            GUISetBkColor($APP_COLOR_DARK, $self.hGui)
 
         Case 'DEFAULT'
             #Region Labels
@@ -109,6 +109,6 @@ Func MainView__ChangeTheme($self, $sTypeTheme)
             ;~ GUISetBkColor(0xA0A0A4 , $self.hGui)
             ;~ GUISetBkColor(0xFFEE88BB , $self.hGui)
             ;~ GUISetBkColor($COLOR_3DFACE , $self.hGui)
-            GUISetBkColor(0xF0F0F0 , $self.hGui)
+            GUISetBkColor($APP_COLOR_DEFAULT, $self.hGui)
     EndSwitch
 EndFunc
