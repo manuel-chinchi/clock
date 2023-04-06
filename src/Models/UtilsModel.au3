@@ -1,6 +1,7 @@
 #include-once
 #include "..\Libraries\AutoItObject.au3"
-#include "..\FontBase64.au3"
+#include "..\Libraries\FontBase64.au3"
+#include <WinAPIGdi.au3>
 
 _AutoItObject_Startup()
 
@@ -10,8 +11,8 @@ Func UtilsModel()
     _AutoItObject_AddMethod($self, "GetTime", "UtilsModel__GetTime")
     _AutoItObject_AddMethod($self, "GetDate", "UtilsModel__GetDate")
     _AutoItObject_AddMethod($self, "GetCurrentFormatTime", "UtilsModel__GetCurrentFormatTime")
-    _AutoItObject_AddMethod($self, "AdjustScaleControlsHightDPI", "UtilsModel__AdjustScaleControlsHightDPI")
-    _AutoItObject_AddMethod($self, "CreateLocalFontFromBase64String", "UtilsModel__CreateLocalFontFromBase64String")
+    _AutoItObject_AddMethod($self, "AdjustControlsToCurrentDPI", "UtilsModel__AdjustControlsToCurrentDPI")
+    _AutoItObject_AddMethod($self, "CreateFontResource", "UtilsModel__CreateFontResource")
 
     _AutoItObject_AddProperty($self, "bFormat24hs", $ELSCOPE_PUBLIC, False)
     _AutoItObject_AddProperty($self, "sFormatTime", $ELSCOPE_PUBLIC, '')
@@ -47,10 +48,14 @@ Func UtilsModel__GetCurrentFormatTime($self)
     EndIf
 EndFunc
 
-Func UtilsModel__AdjustScaleControlsHightDPI($self)
+Func UtilsModel__AdjustControlsToCurrentDPI($self)
     DllCall("User32.dll", "bool", "SetProcessDPIAware")
 EndFunc
 
-Func UtilsModel__CreateLocalFontFromBase64String($self, $sPathResource = @ScriptDir, $sNameResource = '\Hack-Regular.ttf')
+Func UtilsModel__CreateFontResource($self, $sPathResource = @ScriptDir, $sNameResource = '\Hack-Regular.ttf')
     _Base64String(True, $sPathResource, $sNameResource)
+EndFunc
+
+Func UtilsModel__AddFontResource($self, $sFontPath = @ScriptDir &'\Hack-Regular.ttf')
+    _WinAPI_AddFontResourceEx($sFontPath, $FR_PRIVATE, False)
 EndFunc

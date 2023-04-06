@@ -1,8 +1,8 @@
 #include "..\Libraries\AutoItObject.au3"
 #include "..\Constants.au3"
+#include "..\Common.au3"
 #include "..\Models\UtilsModel.au3"
 #include <GUIConstants.au3>
-#include <WinAPIGdi.au3>
 
 _AutoItObject_Startup()
 
@@ -31,17 +31,14 @@ Func MainView__Create($self)
     $self.hGui = GUICreate($APP_NAME &" " &$APP_VERSION, 342, 410, -1, -1, $WS_SYSMENU)
 
     If FileExists($APP_FONT_PATH) == $FILE_NOT_EXIST Then
-        ConsoleWrite('La fuente ' &$APP_FONT_PATH &' no se encontro!')
-
-        Local $oUtilModel = UtilsModel()
-        $oUtilModel.CreateLocalFontFromBase64String(@ScriptDir, '\Hack-Regular.ttf')
-        _WinAPI_AddFontResourceEx(@ScriptDir &'\Hack-Regular.ttf', $FR_PRIVATE, False)
+        $g_oUtilsModel.CreateFontResource(@ScriptDir, '\Hack-Regular.ttf')
+        $g_oUtilsModel.AddFontResource(@ScriptDir &'\Hack-Regular.ttf')
     EndIf
 
-    $self.lblTime = GUICtrlCreateLabel('hh:mm:ss', 32, 78, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
+    $self.lblTime = GUICtrlCreateLabel($g_oUtilsModel.GetTime(), 32, 78, 268, 59, BitOR($SS_CENTER, $SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
 
-    $self.lblDate = GUICtrlCreateLabel('dd/mm/yy', 32, 14, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
+    $self.lblDate = GUICtrlCreateLabel($g_oUtilsModel.GetDate(), 32, 14, 268, 59, BitOR($SS_CENTER, $SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
 
     $self.grpSettings = GUICtrlCreateGroup("SETTINGS", 24, 194, 284, 151)
