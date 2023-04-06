@@ -10,9 +10,6 @@ Global $g_oUtilsModel = UtilsModel()
 ; Fix for screens with hight DPI (when using editors that are not SciTE)
 $g_oUtilsModel.AdjustScaleControlsHightDPI()
 
-; Set custom font
-_WinAPI_AddFontResourceEx($APP_FONT_PATH, $FR_PRIVATE, False)
-
 Func Main()
     Local $oMainView = MainView()
 

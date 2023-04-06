@@ -1,6 +1,8 @@
 #include "..\Libraries\AutoItObject.au3"
 #include "..\Constants.au3"
+#include "..\Models\UtilsModel.au3"
 #include <GUIConstants.au3>
+#include <WinAPIGdi.au3>
 
 _AutoItObject_Startup()
 
@@ -27,6 +29,14 @@ EndFunc
 
 Func MainView__Create($self)
     $self.hGui = GUICreate($APP_NAME &" " &$APP_VERSION, 342, 410, -1, -1, $WS_SYSMENU)
+
+    If FileExists($APP_FONT_PATH) == $FILE_NOT_EXIST Then
+        ConsoleWrite('La fuente ' &$APP_FONT_PATH &' no se encontro!')
+
+        Local $oUtilModel = UtilsModel()
+        $oUtilModel.CreateLocalFontFromBase64String(@ScriptDir, '\Hack-Regular.ttf')
+        _WinAPI_AddFontResourceEx(@ScriptDir &'\Hack-Regular.ttf', $FR_PRIVATE, False)
+    EndIf
 
     $self.lblTime = GUICtrlCreateLabel('hh:mm:ss', 32, 78, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
