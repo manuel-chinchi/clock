@@ -3,8 +3,8 @@
 	<properties>
 		<property name="Left" vt="Int16">258</property>
 		<property name="Top" vt="Int16">138</property>
-		<property name="Width" vt="Int16">356</property>
-		<property name="Height" vt="Int16">442</property>
+		<property name="Width" vt="Int16">355</property>
+		<property name="Height" vt="Int16">447</property>
 		<property name="Caption" vt="String">frmMain</property>
 		<property name="Color" vt="Ident">clBtnFace</property>
 		<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
@@ -33,9 +33,15 @@
 	<components>
 		<object type="TALabel" name="lblTime">
 			<properties>
+<<<<<<< HEAD
 				<property name="Left" vt="Int8">32</property>
 				<property name="Top" vt="Int8">78</property>
 				<property name="Width" vt="Int16">228</property>
+=======
+				<property name="Left" vt="Int8">24</property>
+				<property name="Top" vt="Int8">78</property>
+				<property name="Width" vt="Int16">252</property>
+>>>>>>> dev
 				<property name="Height" vt="Int8">59</property>
 				<property name="Caption" vt="String">00:00:00</property>
 				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
@@ -55,9 +61,15 @@
 		</object>
 		<object type="TALabel" name="lblDate">
 			<properties>
+<<<<<<< HEAD
 				<property name="Left" vt="Int8">32</property>
 				<property name="Top" vt="Int8">24</property>
 				<property name="Width" vt="Int16">228</property>
+=======
+				<property name="Left" vt="Int8">24</property>
+				<property name="Top" vt="Int8">24</property>
+				<property name="Width" vt="Int16">252</property>
+>>>>>>> dev
 				<property name="Height" vt="Int8">59</property>
 				<property name="Caption" vt="String">DD/MM/YY</property>
 				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
@@ -68,7 +80,103 @@
 				<property name="ParentFont" vt="False">False</property>
 				<property name="TabOrder" vt="Int8">1</property>
 				<property name="HaveVariable" vt="False">False</property>
-				<property name="CtrlStyle" vt="Int32">1342309121</property>
+				<property name="CtrlStyle" vt="Int32">1342309122</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set"/>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAGroup" name="grpSettings">
+			<properties>
+				<property name="Left" vt="Int8">24</property>
+				<property name="Top" vt="Int16">184</property>
+				<property name="Width" vt="Int16">281</property>
+				<property name="Height" vt="Int16">177</property>
+				<property name="CtrlStyle" vt="Int32">1342308359</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Caption" vt="String">SETTINGS</property>
+				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-17</property>
+				<property name="Font.Name" vt="String">Hack</property>
+				<property name="Font.Style" vt="Set">fsBold</property>
+				<property name="TabOrder" vt="Int8">2</property>
+				<property name="Resizing" vt="Set"/>
+			</properties>
+			<components>
+				<object type="TACheckbox" name="ckbWeather">
+					<properties>
+						<property name="Left" vt="Int8">24</property>
+						<property name="Top" vt="Int8">32</property>
+						<property name="Width" vt="Int16">233</property>
+						<property name="Height" vt="Int8">41</property>
+						<property name="Caption" vt="String">SHOW WEATHER</property>
+						<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
+						<property name="Font.Color" vt="Ident">clWindowText</property>
+						<property name="Font.Height" vt="Int8">-17</property>
+						<property name="Font.Name" vt="String">Hack</property>
+						<property name="Font.Style" vt="Set">fsBold</property>
+						<property name="ParentFont" vt="False">False</property>
+						<property name="TabOrder" vt="Int8">0</property>
+						<property name="CtrlStyle" vt="Int32">1342242819</property>
+						<property name="CtrlExStyle" vt="Int8">0</property>
+						<property name="Resizing" vt="Set">DockHeight</property>
+					</properties>
+					<components/>
+				</object>
+				<object type="TACheckbox" name="chkFormatTime">
+					<properties>
+						<property name="Left" vt="Int8">24</property>
+						<property name="Top" vt="Int8">72</property>
+						<property name="Width" vt="Int16">233</property>
+						<property name="Height" vt="Int8">41</property>
+						<property name="Caption" vt="String">FORMAT 24 HS</property>
+						<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
+						<property name="Font.Color" vt="Ident">clWindowText</property>
+						<property name="Font.Height" vt="Int8">-17</property>
+						<property name="Font.Name" vt="String">Hack</property>
+						<property name="Font.Style" vt="Set">fsBold</property>
+						<property name="ParentFont" vt="False">False</property>
+						<property name="TabOrder" vt="Int8">1</property>
+						<property name="CtrlStyle" vt="Int32">1342242819</property>
+						<property name="CtrlExStyle" vt="Int8">0</property>
+						<property name="Resizing" vt="Set">DockHeight</property>
+					</properties>
+					<components/>
+				</object>
+				<object type="TACheckbox" name="chkDarkMode">
+					<properties>
+						<property name="Left" vt="Int8">24</property>
+						<property name="Top" vt="Int8">112</property>
+						<property name="Width" vt="Int16">233</property>
+						<property name="Height" vt="Int8">41</property>
+						<property name="Caption" vt="String">DARK MODE</property>
+						<property name="TabOrder" vt="Int8">2</property>
+						<property name="CtrlStyle" vt="Int32">1342242819</property>
+						<property name="CtrlExStyle" vt="Int8">0</property>
+						<property name="Resizing" vt="Set">DockHeight</property>
+					</properties>
+					<components/>
+				</object>
+			</components>
+		</object>
+		<object type="TALabel" name="lblFormatTime">
+			<properties>
+				<property name="Left" vt="Int16">278</property>
+				<property name="Top" vt="Int8">102</property>
+				<property name="Width" vt="Int8">52</property>
+				<property name="Height" vt="Int8">28</property>
+				<property name="Hint" vt="String">[]</property>
+				<property name="Caption" vt="String">A.M.</property>
+				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-20</property>
+				<property name="Font.Name" vt="String">Hack</property>
+				<property name="Font.Style" vt="Set">fsBold</property>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">3</property>
+				<property name="HaveVariable" vt="False">False</property>
+				<property name="CtrlStyle" vt="Int32">1342309120</property>
 				<property name="CtrlExStyle" vt="Int8">0</property>
 				<property name="Resizing" vt="Set"/>
 			</properties>

@@ -1,5 +1,7 @@
 #include "..\Libraries\AutoItObject.au3"
 #include "..\Constants.au3"
+#include "..\Common.au3"
+#include "..\Models\UtilsModel.au3"
 #include <GUIConstants.au3>
 
 _AutoItObject_Startup()
@@ -26,25 +28,30 @@ Func MainView()
 EndFunc
 
 Func MainView__Create($self)
-    $self.hGui = GUICreate($APP_NAME &" - " &$APP_VERSION, 342, 410, -1, -1, $WS_SYSMENU)
+    $self.hGui = GUICreate($APP_NAME &" " &$APP_VERSION, 342, 410, -1, -1, $WS_SYSMENU)
 
-    $self.lblTime = GUICtrlCreateLabel('hh:mm:ss', 32, 78, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
+    If FileExists($APP_FONT_PATH) == $FILE_NOT_EXIST Then
+        $g_oUtilsModel.CreateFontResource(@ScriptDir, '\Hack-Regular.ttf')
+        $g_oUtilsModel.AddFontResource(@ScriptDir &'\Hack-Regular.ttf')
+    EndIf
+
+    $self.lblTime = GUICtrlCreateLabel($g_oUtilsModel.GetTime(), 32, 78, 268, 59, BitOR($SS_CENTER, $SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
 
-    $self.lblDate = GUICtrlCreateLabel('dd/mm/yy', 32, 14, 268, 59, BitOR($SS_CENTER,$SS_CENTERIMAGE))
+    $self.lblDate = GUICtrlCreateLabel($g_oUtilsModel.GetDate(), 32, 14, 268, 59, BitOR($SS_CENTER, $SS_CENTERIMAGE))
     GUICtrlSetFont(-1, 28, 400, 0, $APP_FONT_NAME)
 
     $self.grpSettings = GUICtrlCreateGroup("SETTINGS", 24, 194, 284, 151)
-    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
+    GUICtrlSetFont(-1, 10, 800, 0, $APP_FONT_NAME)
 
     $self.chkAlwaysOnTop = GUICtrlCreateCheckbox('ALWAYS ON TOP', 48, 216, 233, 41)
-    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
+    GUICtrlSetFont(-1, 10, 800, 0, $APP_FONT_NAME)
 
     $self.chkFormatTime = GUICtrlCreateCheckbox('FORMAT 24 HS', 48, 256, 233, 41)
-    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
+    GUICtrlSetFont(-1, 10, 800, 0, $APP_FONT_NAME)
 
     $self.chkDarkMode = GUICtrlCreateCheckbox('DARK MODE', 48, 296, 233, 41)
-    GUICtrlSetFont(-1, 10, 800, 0, 'Hack')
+    GUICtrlSetFont(-1, 10, 800, 0, $APP_FONT_NAME)
 
     GUICtrlCreateGroup("", -99, -99, 1, 1) ; ???
 
@@ -83,7 +90,7 @@ Func MainView__ChangeTheme($self, $sTypeTheme)
             #EndRegion
             
             ;~ https://www.colorhexa.com/2d2d30
-            GUISetBkColor(0x2d2d30, $self.hGui)
+            GUISetBkColor($APP_COLOR_DARK, $self.hGui)
 
         Case 'DEFAULT'
             #Region Labels
@@ -109,6 +116,6 @@ Func MainView__ChangeTheme($self, $sTypeTheme)
             ;~ GUISetBkColor(0xA0A0A4 , $self.hGui)
             ;~ GUISetBkColor(0xFFEE88BB , $self.hGui)
             ;~ GUISetBkColor($COLOR_3DFACE , $self.hGui)
-            GUISetBkColor(0xF0F0F0 , $self.hGui)
+            GUISetBkColor($APP_COLOR_DEFAULT, $self.hGui)
     EndSwitch
 EndFunc

@@ -5,13 +5,8 @@
 
 Opt("MustDeclareVars", 1)
 
-Global $g_oUtilsModel = UtilsModel()
-
 ; Fix for screens with hight DPI (when using editors that are not SciTE)
-$g_oUtilsModel.AdjustScaleControlsHightDPI()
-
-; Set custom font
-_WinAPI_AddFontResourceEx($APP_FONT_PATH, $FR_PRIVATE, False)
+$g_oUtilsModel.AdjustControlsToCurrentDPI()
 
 Func Main()
     Local $oMainView = MainView()
@@ -19,12 +14,15 @@ Func Main()
     ; Create view
     $oMainView.Create()
 
-    ; Refresh date and time in view
+    ; Get label handlers
     Global $g_lblTime = $oMainView.lblTime
     Global $g_lblDate = $oMainView.lblDate
 
-    AdlibRegister("__RefreshTime", 1000)
-    AdlibRegister("__RefreshDate", 1000)
+    AdlibRegister("_RefreshTime", 1000)
+    AdlibRegister("_RefreshDate", 1000)
+
+    GUICtrlSetState($oMainView.lblFormatTime, $GUI_SHOW)
+    GUICtrlSetData($oMainView.lblFormatTime, $g_oUtilsModel.GetCurrentFormatTime())
 
     GUICtrlSetState($oMainView.lblFormatTime, $GUI_SHOW)
     GUICtrlSetData($oMainView.lblFormatTime, $g_oUtilsModel.GetCurrentFormatTime())
@@ -37,7 +35,11 @@ Func Main()
 
         Switch $nMsg
             Case $GUI_EVENT_CLOSE
-                ExitLoop
+                Local $iOpt = MsgBox($MB_YESNO + $MB_TOPMOST + $MB_TASKMODAL, '', 'Are you sure you want to leave?')
+
+                If $iOpt == $IDYES Then
+                    Exit
+                EndIf
 
             Case $oMainView.chkAlwaysOnTop
                 If BitAND(GUICtrlRead($oMainView.chkAlwaysOnTop), $GUI_CHECKED) == 1 Then
@@ -55,7 +57,7 @@ Func Main()
                     GUICtrlSetState($oMainView.lblFormatTime, $GUI_SHOW)
                     GUICtrlSetData($oMainView.lblFormatTime, $g_oUtilsModel.sFormatTime)
                 EndIf
-                __RefreshTime()
+                _RefreshTime()
 
             Case $oMainView.chkDarkMode
                 If BitAND(GUICtrlRead($oMainView.chkDarkMode), $GUI_CHECKED) == 1 Then
@@ -69,10 +71,10 @@ EndFunc
 
 Main()
 
-Func __RefreshTime()
+Func _RefreshTime()
     GUICtrlSetData($g_lblTime, $g_oUtilsModel.GetTime())
 EndFunc
 
-Func __RefreshDate()
+Func _RefreshDate()
     GUICtrlSetData($g_lblDate, $g_oUtilsModel.GetDate())
 EndFunc
